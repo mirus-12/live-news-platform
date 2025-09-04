@@ -1,0 +1,205 @@
+/* styles/globals.css
+   Complete site stylesheet for Live News Platform
+   - Includes variables, layout, forms, buttons, nav, cards, and responsive rules
+*/
+
+/* Import a clean variable font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --text: #0f172a;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+  --primary-hover: #1e4fd1;
+  --danger: #dc2626;
+  --danger-hover: #b91c1c;
+  --radius: 10px;
+  --shadow: 0 6px 18px rgba(15,23,42,0.06);
+  --glass: rgba(255,255,255,0.6);
+  --max-width: 980px;
+  --gap: 12px;
+}
+
+/* Box sizing + resets */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html,body,div,span,h1,h2,h3,h4,h5,h6,p,ul,ol,li,figure,figcaption,blockquote,dl,dd {
+  margin: 0;
+  padding: 0;
+}
+ul { list-style: none; }
+button { font: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Page base */
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+  font-size: 16px;
+}
+
+/* Utility container */
+.container {
+  max-width: var(--max-width);
+  margin: 32px auto;
+  padding: 18px;
+}
+
+/* Headings */
+h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+h2 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+h3 { font-size: 16px; font-weight: 600; }
+h4 { font-size: 15px; font-weight: 600; }
+
+/* Card */
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px;
+  box-shadow: var(--shadow);
+  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15,23,42,0.08);
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  outline: none;
+  transition: box-shadow 120ms ease, border-color 120ms ease;
+  font-size: 15px;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+textarea { min-height: 140px; resize: vertical; }
+input:focus, textarea:focus, select:focus {
+  box-shadow: 0 4px 18px rgba(37,99,235,0.08);
+  border-color: var(--primary);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #e5e7eb;
+  color: #111827;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(2,6,23,0.06); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(37,99,235,0.16);
+}
+.btn-primary:hover { background: var(--primary-hover); }
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(220,38,38,0.12);
+}
+.btn-danger:hover { background: var(--danger-hover); }
+
+.btn[disabled],
+button[disabled] { opacity: 0.6; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Nav / Header */
+header {
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.95));
+  backdrop-filter: blur(4px);
+}
+header > div {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap);
+}
+header a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+header a:hover { background: rgba(37,99,235,0.06); color: var(--text); }
+
+/* Small text / timestamps */
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+.timestamp {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Lists */
+.post-list { display: grid; gap: 10px; }
+.post-item { padding: 12px; border-radius: 8px; background: var(--card); border: 1px solid var(--border); }
+
+/* Audio player */
+audio { width: 100%; margin-top: 8px; outline: none; }
+
+/* Responsive layout */
+@media (max-width: 760px) {
+  .container { margin: 18px 14px; padding: 12px; }
+  header > div { flex-direction: column; align-items: stretch; gap: 10px; }
+  header a { padding: 8px 10px; }
+  h1 { font-size: 22px; }
+  .card { padding: 12px; }
+}
+
+/* Accessibility helpers */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: 3px solid rgba(37,99,235,0.20);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Tiny utilities */
+.text-center { text-align: center; }
+.mt-2 { margin-top: 8px; }
+.mb-2 { margin-bottom: 8px; }
+
+/* Small screens: larger tap targets */
+@media (max-width: 420px) {
+  .btn { padding: 12px 14px; font-size: 15px; border-radius: 10px; }
+  input, textarea { font-size: 15px; padding: 12px; }
+}
